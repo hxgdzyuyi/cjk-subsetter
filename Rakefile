@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "subset"
   gem.homepage = "http://github.com/hxgdzyuyi/subset"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{subset chinese}
+  gem.description = %Q{subset chinese}
   gem.email = "yangqing@douban.com"
   gem.authors = ["yangqing"]
   # dependencies defined in Gemfile
