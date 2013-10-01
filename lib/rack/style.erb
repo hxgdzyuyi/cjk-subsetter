@@ -1,8 +1,8 @@
 <style>
   @font-face
   {
-    font-family: fzlth;
-    src: url('/font/hymb.ttf');
+    font-family: <%= font_key %>;
+    src: url(<%= relative_path %>);
   }
-  .cjk { font-family: fzlth; }
+  <%= klass %> { font-family: <%= font_key %>; }
 </style>
