@@ -23,8 +23,8 @@ module Rack
 
     def create_subset_map(html)
       doc = Nokogiri::HTML(html)
-      doc.search('[class*="webfont-"]').each do |element|
-        type = /webfont-(\w+)/.match(element['class'])[1]
+      doc.search('[class*="%s"]' % @prefix).each do |element|
+        type = /#{@prefix}-(\w+)/.match(element['class'])[1]
         unless @subset_string_map[type]
           @subset_string_map[type] = Hash.new
         end
@@ -78,7 +78,7 @@ module Rack
 
         p_output = Pathname.new file_path
         relative_path = p_output.relative_path_from p_public
-        klass = '.webfont-' + font_key
+        klass = '.%s-' % @prefix + font_key
         new_body.gsub!(%r{</head>}, template.result(binding) + "</head>")
       end
 
