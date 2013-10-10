@@ -14,13 +14,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "subset"
-  gem.homepage = "http://github.com/hxgdzyuyi/subset"
+  gem.name = "cjk-subset"
+  gem.homepage = "https://bitbucket.org/hxgdzyuyi/cjk-subset/overview"
   gem.license = "MIT"
-  gem.summary = %Q{subset chinese}
-  gem.description = %Q{subset chinese}
-  gem.email = "yangqing@douban.com"
-  gem.authors = ["yangqing"]
+  gem.summary = %Q{subset cjk font}
+  gem.description = %Q{subset cjk font}
+  gem.email = "hxgdzyuyi@gmail.com"
+  gem.authors = ["hxgdzyuyi"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
