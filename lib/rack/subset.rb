@@ -3,6 +3,7 @@ require 'nokogiri'
 require 'digest/sha1'
 require 'erb'
 require 'pathname'
+require 'posix/spawn'
 
 module Rack
   class Subset
@@ -73,7 +74,7 @@ module Rack
 
         unless ::File.exist? file_path
           ::File.open(file_path, 'w+')
-          `java -jar #{@sfnttool} -s #{subset_string} #{@font_file_dir}/#{font_name} #{file_path}`
+          child = POSIX::Spawn::Child.new('java', "-jar", "#{@sfnttool}", "-s", "#{subset_string}", "#{@font_file_dir}/#{font_name}", "#{file_path}")
         end
 
         p_output = Pathname.new file_path

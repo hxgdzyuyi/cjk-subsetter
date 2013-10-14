@@ -4,6 +4,7 @@ source "http://rubygems.org"
 #   gem "activesupport", ">= 2.3.5"
 #
 gem "nokogiri", "~> 1.5.0"
+gem "posix-spawn", "~> 0.3.6"
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
