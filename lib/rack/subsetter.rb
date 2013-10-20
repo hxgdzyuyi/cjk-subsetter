@@ -6,7 +6,7 @@ require 'pathname'
 require 'posix/spawn'
 
 module Rack
-  class Subset
+  class Subsetter
     def initialize(app, options={})
       @app = app
       @prefix = options[:prefix]

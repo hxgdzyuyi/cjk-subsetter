@@ -1,7 +1,7 @@
 require 'rubygems'
 
 require './app'
-require '../lib/rack/subset'
+require '../lib/rack/subsetter'
 
 require 'rack/cache'
 
@@ -9,7 +9,7 @@ use Rack::Cache,
   :metastore   => 'file:./cache/rack/meta',
   :entitystore => 'file:./cache/rack/body'
 
-use Rack::Subset, {
+use Rack::Subsetter, {
   :font_map => {
     'sentychalk' => ['/senty/SentyChalk', '.ttf'],
   },

@@ -1,5 +1,5 @@
 require 'rspec'
-require File.dirname(File.dirname(__FILE__)) + '/lib/rack/subset'
+require File.dirname(File.dirname(__FILE__)) + '/lib/rack/subsetter'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
