@@ -16,13 +16,12 @@ Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "cjk-subsetter"
   gem.homepage = "https://bitbucket.org/hxgdzyuyi/cjk-subsetter/overview"
-  gem.license = "MIT"
-  gem.summary = %Q{subset cjk font}
-  gem.description = %Q{subset cjk font}
+  gem.license = "Apache License 2.0"
+  gem.summary = %Q{You can use chinese webfont}
+  gem.description = %Q{You can use chinese webfont}
   gem.email = "hxgdzyuyi@gmail.com"
   gem.authors = ["hxgdzyuyi"]
-  gem.files.exclude 'example'
-  gem.files.exclude 'spec'
+  gem.files = Dir.glob('lib/**/*')
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
