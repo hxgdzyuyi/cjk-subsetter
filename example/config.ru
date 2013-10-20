@@ -10,7 +10,7 @@ use Rack::Cache,
   :entitystore => 'file:./cache/rack/body'
 
 use Rack::Subset, {
-  :symbol_font_map => {
+  :font_map => {
     'sentychalk' => ['/senty/SentyChalk', '.ttf'],
   },
   :prefix => 'webfont',

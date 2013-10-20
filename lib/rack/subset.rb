@@ -10,7 +10,7 @@ module Rack
     def initialize(app, options={})
       @app = app
       @prefix = options[:prefix]
-      @symbol_font_map = options[:symbol_font_map]
+      @font_map = options[:font_map]
       @public_path = options[:public_path]
       @font_file_dir = ::File.expand_path(options[:font_file_dir], @public_path)
       @font_dist_dir = ::File.expand_path(options[:font_dist_dir], @public_path)
@@ -68,7 +68,7 @@ module Rack
 
       @subset_string_map.each do |font_key, chars_map|
         subset_string = chars_map.map { |key, value| key }.join
-        font_name = @symbol_font_map[font_key].join
+        font_name = @font_map[font_key].join
         file_path = create_path(subset_string, font_name)
 
         unless ::File.exist? file_path
