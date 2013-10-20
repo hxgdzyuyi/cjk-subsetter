@@ -9,7 +9,6 @@ module Rack
   class Subset
     def initialize(app, options={})
       @app = app
-      @subset_css_prefix = options[:subset_css_prefix]
       @prefix = options[:prefix]
       @symbol_font_map = options[:symbol_font_map]
       @public_path = options[:public_path]
