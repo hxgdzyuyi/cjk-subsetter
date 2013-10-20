@@ -17,8 +17,8 @@ module Rack
       @sfnttool = ::File.expand_path("../tools/sfnttool.jar", __FILE__)
     end
 
-    def is_cjk_char(str)
-      !!(str =~ /\p{Han}|\p{Katakana}|\p{Hiragana}\p{Hangul}/)
+    def should_subset(str)
+      !!(str =~ /\p{Han}|\p{Katakana}|\p{Hiragana}|\p{Hangul}|\p{Punctuation}|\p{Word}/)
     end
 
     def create_subset_map(html)
@@ -34,7 +34,7 @@ module Rack
 
     def set_subset_map(type, string)
       string.each_char do |s|
-        next unless is_cjk_char(s)
+        next unless should_subset(s)
         @subset_string_map[type][s] = 1
       end
     end
