@@ -14,9 +14,11 @@ use Rack::Subset, {
     'sentychalk' => ['/senty/SentyChalk', '.ttf'],
   },
   :prefix => 'webfont',
-  :font_file_dir => 'font',
-  :font_dist_dir => 'font_dist',
-  :public_path => File.expand_path('../public', __FILE__)
+  :font_source => File.expand_path('../public/font', __FILE__),
+  :font_dist => {
+    :public_path => File.expand_path('../public', __FILE__),
+    :dir => 'font_dist',
+  },
 }
 
 run App.new

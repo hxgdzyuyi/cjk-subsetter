@@ -11,9 +11,9 @@ module Rack
       @app = app
       @prefix = options[:prefix]
       @font_map = options[:font_map]
-      @public_path = options[:public_path]
-      @font_file_dir = ::File.expand_path(options[:font_file_dir], @public_path)
-      @font_dist_dir = ::File.expand_path(options[:font_dist_dir], @public_path)
+      @font_source = options[:font_source]
+      @public_path = options[:font_dist][:public_path]
+      @font_dist = ::File.expand_path(options[:font_dist][:dir], @public_path)
       @sfnttool = ::File.expand_path("../tools/sfnttool.jar", __FILE__)
     end
 
@@ -45,11 +45,11 @@ module Rack
 
     def create_path(string, font_name)
       filename = Digest::SHA1.hexdigest(string + font_name)
-      @font_dist_dir + '/' + filename + '.ttf'
+      @font_dist + '/' + filename + '.ttf'
     end
 
     def call(env)
-      @path = @font_dist_dir
+      @path = @font_dist
 
       status, headers, body = @app.call(env)
       return [status, headers, body] unless html? headers
@@ -74,7 +74,7 @@ module Rack
         unless ::File.exist? file_path
           ::File.open(file_path, 'w+')
           child = POSIX::Spawn::Child.new('java', "-jar", "#{@sfnttool}", "-s", \
-            "#{subset_string}", "#{@font_file_dir}/#{font_name}", "#{file_path}")
+            "#{subset_string}", "#{@font_source}/#{font_name}", "#{file_path}")
         end
 
         p_output = Pathname.new file_path
