@@ -21,6 +21,8 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{subset cjk font}
   gem.email = "hxgdzyuyi@gmail.com"
   gem.authors = ["hxgdzyuyi"]
+  gem.files.exclude 'example'
+  gem.files.exclude 'spec'
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

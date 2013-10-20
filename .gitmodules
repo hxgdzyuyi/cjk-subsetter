@@ -1,0 +1,3 @@
+[submodule "example/public/font"]
+	path = example/public/font
+	url = https://github.com/hxgdzyuyi/free-chinese-font.git
