@@ -73,7 +73,8 @@ module Rack
 
         unless ::File.exist? file_path
           ::File.open(file_path, 'w+')
-          child = POSIX::Spawn::Child.new('java', "-jar", "#{@sfnttool}", "-s", "#{subset_string}", "#{@font_file_dir}/#{font_name}", "#{file_path}")
+          child = POSIX::Spawn::Child.new('java', "-jar", "#{@sfnttool}", "-s", \
+            "#{subset_string}", "#{@font_file_dir}/#{font_name}", "#{file_path}")
         end
 
         p_output = Pathname.new file_path
