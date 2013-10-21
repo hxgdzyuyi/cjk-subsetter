@@ -1,0 +1,32 @@
+body {
+  background: #fcfcfc;
+}
+.banner {
+  height: 230px;
+  background: #f6f6f1;
+}
+.banner h1 {
+  margin: 0;
+  font-size: 48px;
+  color: #cdbb99;
+}
+.banner .bd {
+  margin: 0 auto;
+  width: 500px;
+}
+.banner .text {
+  padding-left: 60px;
+  padding-top: 30px;
+}
+.banner .subtitle {
+  font-size: 36px;
+  color: #755c3b;
+}
+.showcase {
+  text-align: center;
+}
+.showcase .normal,
+.showcase .yong {
+  font-size: 300px;
+  display: inline-block;
+}
