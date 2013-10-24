@@ -1,5 +1,7 @@
 = subsetter
 
+![Logo](https://raw.github.com/hxgdzyuyi/AlexPic/master/skin/alexpic_m.png)
+
 可以在网页中使用中文字体的 Rack 程序。
 
 === 原理
