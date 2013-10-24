@@ -19,6 +19,7 @@ use Rack::Subsetter, {
     :public_path => File.expand_path('../public', __FILE__),
     :dir => 'font_dist',
   },
+  :relative_url_root => '/',
 }
 
 run App.new

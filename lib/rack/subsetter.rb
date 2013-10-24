@@ -13,6 +13,7 @@ module Rack
       @font_map = options[:font_map]
       @font_source = options[:font_source]
       @public_path = options[:font_dist][:public_path]
+      @relative_url_root = options[:relative_url_root] || '/'
       @font_dist = ::File.expand_path(options[:font_dist][:dir], @public_path)
       @sfnttool = ::File.expand_path("../tools/sfnttool.jar", __FILE__)
     end
@@ -78,7 +79,8 @@ module Rack
         end
 
         p_output = Pathname.new file_path
-        relative_path = p_output.relative_path_from p_public
+        font_url = @relative_url_root + \
+          p_output.relative_path_from(p_public).to_s
         klass = '.%s-' % @prefix + font_key
         new_body.gsub!(%r{</head>}, template.result(binding) + "</head>")
       end
