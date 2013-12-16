@@ -1,10 +1,12 @@
 require 'rspec'
-require File.dirname(File.dirname(__FILE__)) + '/lib/rack/subsetter'
+require 'capybara'
+require 'capybara/dsl'
 
-# Requires supporting files with custom matchers and macros, etc,
-# in ./support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+ENV['RACK_ENV'] = 'test'
+
+Capybara.app = Rack::Builder.parse_file(
+  File.join(File.dirname(__FILE__), '../example/config.ru')).first
 
 RSpec.configure do |config|
-  
+  config.include Capybara::DSL
 end

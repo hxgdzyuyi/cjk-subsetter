@@ -16,4 +16,5 @@ group :development do
   gem "simplecov", ">= 0"
   gem "sinatra", ">= 0"
   gem "rack-cache", "~> 1.2"
+  gem "capybara", "~>2.2.0"
 end

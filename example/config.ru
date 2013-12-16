@@ -1,7 +1,5 @@
-require 'rubygems'
-
-require './app'
-require '../lib/rack/subsetter'
+require File.join(File.dirname(__FILE__), './app')
+require File.join(File.dirname(__FILE__), '../lib/rack/subsetter')
 
 require 'rack/cache'
 
