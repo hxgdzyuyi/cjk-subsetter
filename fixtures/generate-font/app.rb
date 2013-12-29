@@ -1,7 +1,7 @@
 require 'sinatra/base'
 
 class App < Sinatra::Base
-  set :public_folder, File.expand_path('../public', __FILE__)
+  set :public_folder, File.join(File.dirname(__FILE__), 'public')
   get '/' do
     erb :index
   end

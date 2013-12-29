@@ -4,8 +4,8 @@ require 'capybara/dsl'
 
 ENV['RACK_ENV'] = 'test'
 
-Capybara.app = Rack::Builder.parse_file(
-  File.join(File.dirname(__FILE__), '../example/config.ru')).first
+PROJECT_ROOT_PATH = File.dirname(File.dirname(__FILE__))
+FIXTURES_ROOT = File.join(PROJECT_ROOT_PATH, 'fixtures')
 
 RSpec.configure do |config|
   config.include Capybara::DSL
