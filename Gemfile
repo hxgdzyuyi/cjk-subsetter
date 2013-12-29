@@ -15,6 +15,5 @@ group :development do
   gem "jeweler", "~> 1.8.8"
   gem "simplecov", ">= 0"
   gem "sinatra", ">= 0"
-  gem "rack-cache", "~> 0.2"
   gem "capybara", "~>2.2.0"
 end

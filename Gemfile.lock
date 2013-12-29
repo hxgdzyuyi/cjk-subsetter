@@ -49,8 +49,6 @@ GEM
       rack (~> 1.2)
     posix-spawn (0.3.6)
     rack (1.5.2)
-    rack-cache (1.2)
-      rack (>= 0.4)
     rack-protection (1.5.0)
       rack
     rack-test (0.6.2)
@@ -87,7 +85,6 @@ DEPENDENCIES
   jeweler (~> 1.8.8)
   nokogiri (~> 1.5.0)
   posix-spawn (~> 0.3.6)
-  rack-cache (~> 1.2)
   rdoc (~> 3.12)
   rspec (~> 2.8.0)
   simplecov
