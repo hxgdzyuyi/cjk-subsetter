@@ -22,3 +22,5 @@
 目前不支持 IE(eot), 因为只会生成 ttf 字体
 
 http://www.browserstack.com/screenshots/d4d8917bd06dcddd17be4706ff4508e5842e5078
+
+[![Build Status](https://secure.travis-ci.org/hxgdzyuyi/cjk-subsetter.png)](http://travis-ci.org/hxgdzyuyi/cjk-subsetter)
