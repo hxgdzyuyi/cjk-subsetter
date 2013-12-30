@@ -17,7 +17,7 @@ describe "Generate ttf" do
 
   it "TTF should be generated" do
     visit '/'
-    font_is_generated = File.exist?(File.join(
+    font_is_generated = File.size?(File.join(
       FONT_DIST, '448ab822cd2af69dc18fbf3ebb1ae5858f78da3b.ttf'))
     expect(font_is_generated).to be_true
   end
