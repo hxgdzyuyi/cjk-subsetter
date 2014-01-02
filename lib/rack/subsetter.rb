@@ -44,9 +44,9 @@ module Rack
       headers['Content-Type'] =~ /html/
     end
 
-    def create_path(string, font_name)
+    def create_path(string, font_name, file_type)
       filename = Digest::SHA1.hexdigest(string + font_name)
-      @font_dist + '/' + filename + '.ttf'
+      @font_dist + '/' + filename + file_type
     end
 
     def call(env)
@@ -70,19 +70,31 @@ module Rack
       @subset_string_map.each do |font_key, chars_map|
         subset_string = chars_map.map { |key, value| key }.join
         font_name = @font_map[font_key].join
-        file_path = create_path(subset_string, font_name)
 
-        unless ::File.exist? file_path
-          ::File.open(file_path, 'w+')
-          child = POSIX::Spawn::Child.new('java', "-jar", "#{@sfnttool}", "-s", \
-            "#{subset_string}", "#{@font_source}/#{font_name}", "#{file_path}")
+        ['.ttf', '.eot'].each do |file_type|
+          file_path = create_path(subset_string, font_name, file_type)
+          file_is_eot = file_type == '.eot'
+
+          unless ::File.exist? file_path
+            ::File.open(file_path, 'w+')
+            args = ["java", "-jar", "#{@sfnttool}"]
+
+            if file_is_eot
+              args.push "-e"
+            end
+
+            args.concat ["-s", "#{subset_string}",
+              "#{@font_source}/#{font_name}", "#{file_path}"]
+
+            child = POSIX::Spawn::Child.new(*args)
+          end
+
+          p_output = Pathname.new file_path
+          font_url = @relative_url_root + \
+            p_output.relative_path_from(p_public).to_s
+          klass = '.%s-' % @prefix + font_key
+          new_body.gsub!(%r{</head>}, template.result(binding) + "</head>")
         end
-
-        p_output = Pathname.new file_path
-        font_url = @relative_url_root + \
-          p_output.relative_path_from(p_public).to_s
-        klass = '.%s-' % @prefix + font_key
-        new_body.gsub!(%r{</head>}, template.result(binding) + "</head>")
       end
 
       response.write new_body
