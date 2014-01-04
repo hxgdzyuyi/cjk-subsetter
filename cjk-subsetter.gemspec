@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "cjk-subsetter"
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["hxgdzyuyi"]
-  s.date = "2014-01-02"
+  s.date = "2014-01-04"
   s.description = "You can use chinese webfont"
   s.email = "hxgdzyuyi@gmail.com"
   s.extra_rdoc_files = [
