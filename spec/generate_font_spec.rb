@@ -15,10 +15,10 @@ describe "Generate ttf" do
     expect(page).to have_content 'Chalk'
   end
 
-  it "TTF and EOT should be generated" do
+  it "TTF and WOFF should be generated" do
     visit '/'
     file_name = '448ab822cd2af69dc18fbf3ebb1ae5858f78da3b'
-    ['.ttf', '.eot'].each do |file_type|
+    ['.ttf', '.woff'].each do |file_type|
       font_is_generated = File.size?(File.join(
         FONT_DIST, file_name + file_type))
       expect(font_is_generated).to be_true

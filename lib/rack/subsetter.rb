@@ -70,8 +70,10 @@ module Rack
       @subset_string_map.each do |font_key, chars_map|
         subset_string = chars_map.map { |key, value| key }.join
         font_name = @font_map[font_key].join
+        klass = '.%s-' % @prefix + font_key
+        font_url = {}
 
-        ['.ttf', '.eot'].each do |file_type|
+        ['.ttf', '.woff'].each do |file_type|
           file_path = create_path(subset_string, font_name, file_type)
           file_is_eot = file_type == '.eot'
 
@@ -80,7 +82,7 @@ module Rack
             args = ["java", "-jar", "#{@sfnttool}"]
 
             if file_is_eot
-              args.push "-e"
+              args.push "-w"
             end
 
             args.concat ["-s", "#{subset_string}",
@@ -90,11 +92,10 @@ module Rack
           end
 
           p_output = Pathname.new file_path
-          font_url = @relative_url_root + \
+          font_url[file_type] = @relative_url_root + \
             p_output.relative_path_from(p_public).to_s
-          klass = '.%s-' % @prefix + font_key
-          new_body.gsub!(%r{</head>}, template.result(binding) + "</head>")
         end
+        new_body.gsub!(%r{</head>}, template.result(binding) + "</head>")
       end
 
       response.write new_body

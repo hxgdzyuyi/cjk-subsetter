@@ -2,7 +2,8 @@
   @font-face
   {
     font-family: <%= font_key %>;
-    src: url('<%= font_url %>');
+    src: url("<%= font_url['.woff'] %>") format("woff"),
+    url("<%= font_url['.ttf'] %>") format("truetype");
   }
   <%= klass %> { font-family: <%= font_key %>; }
 </style>
