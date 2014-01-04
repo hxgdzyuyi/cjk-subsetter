@@ -75,13 +75,13 @@ module Rack
 
         ['.ttf', '.woff'].each do |file_type|
           file_path = create_path(subset_string, font_name, file_type)
-          file_is_eot = file_type == '.eot'
+          file_is_woff = file_type == '.woff'
 
           unless ::File.exist? file_path
             ::File.open(file_path, 'w+')
             args = ["java", "-jar", "#{@sfnttool}"]
 
-            if file_is_eot
+            if file_is_woff
               args.push "-w"
             end
 
